@@ -27,7 +27,11 @@ class TitleBar extends Component {
         this.props.onPageSelected && this.props.onPageSelected(e);
     }
     _onItemPress(position) {
-        this.refs[VIEWPAGER_REF] && this.refs[VIEWPAGER_REF].setPageWithoutAnimation(position);
+        if(this.props.onItemPress) {
+            this.props.onItemPress(position);
+        } else {
+            this.refs[VIEWPAGER_REF] && this.refs[VIEWPAGER_REF].setPageWithoutAnimation(position);
+        }
     }
     setPage(selectedPage: number) {
         this.refs[VIEWPAGER_REF].setPage(selectedPage);
